@@ -1,0 +1,14 @@
+/* body,
+html {
+  height: 100%;
+} */
+
+body,
+html {
+  background-image: url('https://as1.ftcdn.net/v2/jpg/04/98/86/30/1000_F_498863047_AsKBosnlyBZ2OKQwJRXewDwSyUBUdFdE.jpg');
+  width: 100%;
+  height: 100%;
+  /* extended code */
+  background-size: cover;
+  background-repeat: no-repeat;
+}

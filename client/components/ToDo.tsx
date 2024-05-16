@@ -1,9 +1,8 @@
 import { useQuery } from '@tanstack/react-query'
 import { fetchToDoTasks } from '../apis/todo'
-// import { useParams } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 export default function ToDo() {
-  // const { tasks } = useParams()
   const { data, isLoading, isError, error } = useQuery({
     queryKey: ['toDo'],
     queryFn: () => fetchToDoTasks(),
@@ -23,12 +22,12 @@ export default function ToDo() {
   if (data) {
     return (
       <div>
-        <h2>To Do List</h2>
-        <div>
-          {data.items.map((tasks) => (
-            <div key={tasks.id}>{tasks.task}</div>
-          ))}
-        </div>
+        {data.items.map((tasks) => (
+          <div key={tasks.id}>
+            <input type="checkbox" />
+            <Link to={`/task/${tasks.id}`}>{tasks.task}</Link>
+          </div>
+        ))}
       </div>
     )
   }

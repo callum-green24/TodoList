@@ -4,8 +4,7 @@ import ToDo from './ToDo'
 function App() {
   return (
     <div>
-      <h1>App</h1>
-      <p>React development has begun!</p>
+      <h1 className="header">To Do List</h1>
       <ToDo />
     </div>
   )

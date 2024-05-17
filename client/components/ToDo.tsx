@@ -23,8 +23,8 @@ export default function ToDo() {
   if (data) {
     return (
       <div>
-        <h2>To Do List</h2>
-        <div className="postick">
+        <h2 className="header">Tasks</h2>
+        <div className="container">
           {data.items.map((tasks) => (
             <div className="postick" key={tasks.id}>
               {tasks.task}

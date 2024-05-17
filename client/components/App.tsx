@@ -5,10 +5,8 @@ import CreateTask from './CreateTask'
 function App() {
   return (
     <div>
-
-      <h1>To-Do-List</h1>
+      <h1 className="header">To-Do-List</h1>
       <Outlet />
-
     </div>
   )
 }

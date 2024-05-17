@@ -40,7 +40,7 @@ export default function CreateTask() {
 
   return (
     <>
-      <div>
+      <div className="form">
         <form
           onSubmit={handleSubmit}
           data-submitting={addTask.isPending}
@@ -57,7 +57,9 @@ export default function CreateTask() {
               placeholder="What's your next task?"
             />
           </div>
-          <button data-submitting={addTask.isPending}>Add Task</button>
+          <button id="submit" data-submitting={addTask.isPending}>
+            Add Task
+          </button>
         </form>
       </div>
     </>

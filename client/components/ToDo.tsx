@@ -34,14 +34,18 @@ export default function ToDo() {
   if (data) {
     return (
       <>
-        <h2 className="header">Tasks</h2>
-        <div>
+        <div id="form">
           <CreateTask />
         </div>
         <div className="container">
           {data.items.map((tasks) => (
             <div className="postick" key={tasks.id}>
-              <Link to={`/task/${tasks.id}`}>{tasks.task}</Link>
+              <Link
+                style={{ 'text-decoration': 'none' }}
+                to={`/task/${tasks.id}`}
+              >
+                {tasks.task}
+              </Link>
               <button
                 className="image"
                 type="submit"

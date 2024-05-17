@@ -1,13 +1,15 @@
 import { useQuery } from '@tanstack/react-query'
 import { fetchToDoTasks } from '../apis/todo'
-// import { useParams } from 'react-router-dom'
+import { Link } from 'react-router-dom'
+import { useState } from 'react'
+import CreateTask from './CreateTask'
 
 export default function ToDo() {
-  // const { tasks } = useParams()
   const { data, isLoading, isError, error } = useQuery({
     queryKey: ['toDo'],
     queryFn: () => fetchToDoTasks(),
   })
+  const [strike, setStrike] = useState(false)
 
   const handleButtonClick = () => {
     console.log('Button clicked!')
@@ -26,8 +28,12 @@ export default function ToDo() {
   }
   if (data) {
     return (
+
       <div>
         <h2 className="header">Tasks</h2>
+         <div>
+          <CreateTask />
+        </div>
         <div className="container">
           {data.items.map((tasks) => (
             <div className="postick" key={tasks.id}>
@@ -43,10 +49,11 @@ export default function ToDo() {
                   alt="rubbish bin"
                 ></img>
               </button>
+
             </div>
           ))}
         </div>
-      </div>
+      </>
     )
   }
 }

@@ -30,8 +30,10 @@ export default function TaskDescription() {
   if (task) {
     return (
       <>
-        <h1> {task.task}</h1>
-        <p>{task.description}</p>
+        <div className="description">
+          <h1> {task.task}</h1>
+          <p>{task.description}</p>
+        </div>
       </>
     )
   }

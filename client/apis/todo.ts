@@ -35,3 +35,21 @@ export function useAddTask() {
     },
   })
 }
+
+export function useDeleteTask() {
+  const queryClient = useQueryClient()
+
+  return useMutation({
+    mutationFn: async (values: { id: number }) => {
+      const res = await request
+        .delete(`https://paataka.cloud/api/_/glove/todos/${values.id}`)
+        .auth('DVd-nq_UoZY', { type: 'bearer' })
+        .send(values)
+
+      return res.body as Task
+    },
+    onSuccess: async () => {
+      queryClient.invalidateQueries({ queryKey: ['toDo'] })
+    },
+  })
+}

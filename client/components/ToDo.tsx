@@ -1,18 +1,23 @@
 import { useQuery } from '@tanstack/react-query'
-import { fetchToDoTasks } from '../apis/todo'
-import { Link } from 'react-router-dom'
-import { useState } from 'react'
+import { fetchToDoTasks, useDeleteTask } from '../apis/todo'
+
 import CreateTask from './CreateTask'
+import { Link } from 'react-router-dom'
 
 export default function ToDo() {
   const { data, isLoading, isError, error } = useQuery({
     queryKey: ['toDo'],
     queryFn: () => fetchToDoTasks(),
   })
-  const [strike, setStrike] = useState(false)
 
-  const handleButtonClick = () => {
-    console.log('Button clicked!')
+  const deleteTaskMutation = useDeleteTask()
+
+  const handleButtonClick = async () => {
+    try {
+      await deleteTaskMutation.mutateAsync({ id: tasks.id })
+    } catch (error) {
+      console.log('Error with task', error)
+    }
   }
 
   if (isLoading) {
@@ -28,16 +33,15 @@ export default function ToDo() {
   }
   if (data) {
     return (
-
-      <div>
+      <>
         <h2 className="header">Tasks</h2>
-         <div>
+        <div>
           <CreateTask />
         </div>
         <div className="container">
           {data.items.map((tasks) => (
             <div className="postick" key={tasks.id}>
-              {tasks.task}
+              <Link to={`/task/${tasks.id}`}>{tasks.task}</Link>
               <button
                 className="image"
                 type="submit"
@@ -49,7 +53,6 @@ export default function ToDo() {
                   alt="rubbish bin"
                 ></img>
               </button>
-
             </div>
           ))}
         </div>

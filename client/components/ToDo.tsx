@@ -12,9 +12,9 @@ export default function ToDo() {
 
   const deleteTaskMutation = useDeleteTask()
 
-  const handleButtonClick = async () => {
+  const handleButtonClick = async (id: number) => {
     try {
-      await deleteTaskMutation.mutateAsync({ id: tasks.id })
+      await deleteTaskMutation.mutate({ id })
     } catch (error) {
       console.log('Error with task', error)
     }
@@ -45,7 +45,7 @@ export default function ToDo() {
               <button
                 className="image"
                 type="submit"
-                onClick={handleButtonClick}
+                onClick={() => handleButtonClick(tasks.id)}
               >
                 <img
                   className="image"

@@ -9,13 +9,16 @@ html {
 }
 
 .postick {
-  font-family: sans-serif;
-  font-size: 70px;
+  font-family: 'Permanent Marker', cursive;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 25px;
+  color: black;
   border: 1px solid gray;
   width: 200px;
   height: 200px;
   padding: 4px;
-  font-size: 85%;
+  /* font-size: 85%; */
   background: #fffc7f;
   -moz-box-shadow: 2px 2px 2px #999999;
   -webkit-box-shadow: 2px 2px 2px #999999;
@@ -29,7 +32,8 @@ html {
 .header {
   text-align: center;
   color: black;
-  text-shadow: #999999;
+  text-overflow: clip;
+  font-size: 50px;
 }
 
 .container {

@@ -24,9 +24,11 @@ export default function ToDo() {
     return (
       <div>
         <h2>To Do List</h2>
-        <div>
+        <div className="postick">
           {data.items.map((tasks) => (
-            <div key={tasks.id}>{tasks.task}</div>
+            <div className="postick" key={tasks.id}>
+              {tasks.task}
+            </div>
           ))}
         </div>
       </div>
